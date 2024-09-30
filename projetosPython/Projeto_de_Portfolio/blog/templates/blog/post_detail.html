@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+    <h1 class="sr-only text-warning">{{ postagem.titulo }}</h1>
+    <p class="text-warning">{{ postagem.conteudo }}</p>
+
+    <h2 class="sr-only text-warning">Comentários</h2>
+    {% for comentario in postagem.comentarios.all %}
+        <div class="comentario">
+            <p class="text-warning">{{ comentario.conteudo }}</p>
+            <p class="text-warning">Postado por {{ comentario.usuario }} em {{ comentario.criado_em }}</p>
+        </div>
+    {% empty %}
+        <p class="text-warning">Nenhum comentário ainda.</p>
+    {% endfor %}
+
+    {% if user.is_authenticated %}
+        <h2 class="sr-only text-warning">Deixe um comentário</h2>
+        <form method="post" action="{% url 'postagem_detail' pk=postagem.pk %}">
+            {% csrf_token %}
+            {% for field in form %}
+                {{ field.label_tag }}
+                {{ field }}
+                {% if field.errors %}
+                    <div class="error alert alert-warning">{{ field.errors.as_text }}</div>
+                {% endif %}
+            {% endfor %}
+            <button type="submit" class="btn btn-warning">Enviar</button>
+        </form>
+    {% else %}
+        <p class="text-warning">Você precisa estar logado para postar um comentário.</p>
+    {% endif %}
+
+    <!-- Botão para fechar a página de comentários -->
+    <button onclick="goBack()" class="btn btn-warning">Fechar</button>
+
+    <script>
+    function goBack() {
+        window.history.back();
+    }
+    </script>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chatbot</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <h1 class="text-center mb-4">E aí, tudo beleza? Sou o Conversa Aí, seu chatbot amigo para todas as horas. Mande ver o que você quer saber ou fazer e vamos conversar!</h1>
+                <div id="chatbox" class="border p-3 mb-3 bg-light" style="height: 400px; overflow-y: scroll;">
+                    <!-- As mensagens do chat serão inseridas aqui -->
+                </div>
+                <form id="chatform" class="form-inline" method="post">
+                    {% csrf_token %}
+                    <input type="text" id="query" class="form-control col mr-2" placeholder="Digite sua mensagem...">
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

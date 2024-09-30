@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'usuarios/css/usuarios.css' %}">
+{% endblock head %}
+
+{% include "partials/barra_navegacao.html" %}
+
+{% block body %}
+<div class="container">
+    <br><br>
+    {% if messages %}
+        {% for message in messages %}
+            <section class="alert {{ message.tags }}">{{ message }}</section>
+        {% endfor %}
+    {% endif %}
+    <div class="row">
+        <div class="col-md">
+            <form action="{% url 'cadastrar_empresa' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" name="nome" placeholder="Digite o nome da sua empresa" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="cnpj">CNPJ</label>
+                    <input type="text" id="cnpj" name="cnpj" placeholder="Digite o seu CNPJ ..." class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="site">Site</label>
+                    <input type="url" id="site" name="site" placeholder="Digite o seu site ..." class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="tempo_existencia">Há quanto tempo a startup existe?</label>
+                    <select class="form-control" id="tempo_existencia" name="tempo_existencia">
+                        <option value="-6">Menos de 6 meses</option>
+    <option value="+6">Mais de 6 meses</option>
+    <option value="+1">Mais de 1 ano</option>
+    <option value="+5">Mais de 5 anos</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="descricao">Descreva a sua empresa</label>
+                    <textarea class="form-control" id="descricao" name="descricao"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="data_final">Data final para captação</label>
+                    <input type="date" id="data_final" name="data_final" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="percentual_equity">Qual a porcentagem (%) de equity oferecida em contrapartida ao valor</label>
+                    <input type="number" id="percentual_equity" name="percentual_equity" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Qual o estágio da empresa?</label>
+                    <div class="form-check">
+                        <input type="radio" id="estagio_ideia" name="estagio" value="I" class="form-check-input" required>
+                        <label for="estagio_ideia" class="form-check-label">Tenho apenas uma ideia</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" id="estagio_mvp" name="estagio" value="MVP" class="form-check-input" required>
+                        <label for="estagio_mvp" class="form-check-label">Possuo um MVP</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" id="estagio_mvpp" name="estagio" value="MVPP" class="form-check-input" required>
+                        <label for="estagio_mvpp" class="form-check-label">Possuo um MVP com clientes pagantes</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" id="estagio_empresa" name="estagio" value="E" class="form-check-input" required>
+                        <label for="estagio_empresa" class="form-check-label">Empresa pronta para escalar</label>
+                    </div>
+                </div>
+                <div class="form-group">
+    <label for="area">Qual área sua startup está inserida?</label>
+    <select class="form-control" id="area" name="area">
+        <option value="ED">Ed-tech</option>
+        <option value="FT">Fintech</option>
+        <option value="AT">Agrotech</option>
+    </select>
+    </select>
+</div>
+                <div class="form-group">
+                    <label for="publico_alvo">Qual seu público alvo?</label>
+                    <input type="text" class="form-control" id="publico_alvo" name="publico_alvo">
+                </div>
+                <div class="form-group">
+                    <label for="valor">Qual valor deseja captar?</label>
+                    <input type="number" id="valor" name="valor" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="pitch">Envie o pitch de apresentação</label>
+                    <input type="file" id="pitch" name="pitch" class="form-control-file" required>
+                </div>
+                <div class="form-group">
+                    <label for="logo">Envie a logo da empresa</label>
+                    <input type="file" id="logo" name="logo" class="form-control-file" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Cadastrar</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock body %}

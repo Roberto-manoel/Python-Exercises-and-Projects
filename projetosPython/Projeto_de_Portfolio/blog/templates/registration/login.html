@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+  <h2 class="sr-only text-warning">Login</h2>
+
+  <ul class="nav">
+    <li class="nav-item"><a class="nav-link text-warning" href="{% url 'home' %}">Portfólio</a></li>
+    <li class="nav-item"><a class="nav-link text-warning" href="{% url 'solicitar-servico' %}">Solicitar Serviço</a></li>
+    <li class="nav-item"><a class="nav-link text-warning" href="{% url 'youtube_videos' %}">Canal do YouTube</a></li>
+    <li class="nav-item"><a class="nav-link text-warning" href="{% url 'project_index' %}">Projetos</a></li>
+    <li class="nav-item"><a class="nav-link text-warning" href="{% url 'site' %}">Início</a></li>
+  </ul>
+
+  <form method="post">
+    {% csrf_token %}
+    {% if form.errors %}
+      <p>Nenhum registro encontrado. <a href="{% url 'register' %}">Clique aqui</a> para se registrar.</p>
+    {% else %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-warning">Login</button>
+    {% endif %}
+  </form>
+{% endblock %}

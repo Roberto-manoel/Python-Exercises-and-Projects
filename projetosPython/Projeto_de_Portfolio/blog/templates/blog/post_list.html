@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block page_content %}
+<div class="bg-danger">
+    <h1 class="mt-5 mb-4 text-center text-dark bg-white sr-only">Olá, sou Roberto Manuel! Bem-vindo à minha página de postagem.</h1>
+    <br>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" aria-label="Navegação do site">
+        <img src="https://my-site-imagens-videos.s3.us-east-2.amazonaws.com/media/imagem3.jpg" class="img-fluid" alt="#ParaTodosVerem: Imagem de tela de computador com código em cores diferentes. Fundo preto.">
+        <ul class="navbar-nav justify-content-center">
+            <li class="nav-item"><a class="nav-link text-warning" href="{% url 'solicitar-servico' %}">Solicitar Serviço</a></li>
+            <li class="nav-item"><a class="nav-link text-warning" href="{% url 'home' %}">Portfólio</a></li>
+            <li class="nav-item"><a class="nav-link text-warning" href="{% url 'youtube_videos' %}">Canal do YouTube</a></li>
+            <li class="nav-item"><a class="nav-link text-warning" href="{% url 'project_index' %}">Projetos</a></li>
+            <li class="nav-item"><a class="nav-link text-warning" href="{% url 'redes_sociais' %}">Redes Sociais</a></li>
+            <li class="nav-item"><a class="nav-link text-warning" href="{% url 'site' %}">Início</a></li>
+            {% if user.is_authenticated %}
+            <li class="nav-item"><a class="nav-link text-warning" href="{% url 'logout' %}">Logout</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    <br>
+    <p class="text-center text-dark bg-white text-warning">Aqui você fica por dentro das novidades mais recentes.</p>
+    <div class="container">
+        {% for postagem in postagens %}
+        <div class="card mb-4 bg-danger text-white">
+            <div class="card-body">
+                <h2 class="card-title display-4 text-center text-warning">{{ postagem.titulo }}</h2>
+                <p class="card-text text-center text-warning">{{ postagem.conteudo }}</p>
+                <h3 class="text-center text-warning">Comentários</h3>
+                {% for comentario in postagem.comentarios.all %}
+                <div class="comentario">
+                    <p class="text-warning">{{ comentario.conteudo }}</p>
+                    <p class="text-warning">Postado por {{ comentario.usuario }} em {{ comentario.criado_em }}</p>
+                </div>
+                {% empty %}
+                <p class="text-warning">Nenhum comentário ainda.</p>
+                {% endfor %}
+                {% if user.is_authenticated %}
+                <h3 class="text-center text-warning">Deixe um comentário</h3>
+                <form method="post" action="{% url 'postagem_detail' pk=postagem.pk %}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-warning">Enviar</button>
+                </form>
+                {% else %}
+                <p class="text-center text-warning">Você precisa estar logado para postar um comentário. <a href="{% url 'login' %}" class="text-warning">Clique aqui para fazer login</a> ou <a href="{% url 'register' %}" class="text-warning">registre-se</a> se você ainda não tem uma conta.</p>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock page_content %}

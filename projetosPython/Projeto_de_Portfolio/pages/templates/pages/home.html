@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block page_content %}
+<main class="container" style="background-color: red;">
+    <h1 class="mt-5 mb-4 text-dark bg-white">Bem-vindo ao meu portfólio. Aqui você encontrará uma seleção dos meus trabalhos mais recentes e significativos.</h1>
+    <br>
+    <section class="mb-5">
+        <h2 class="mb-3 text-dark bg-white">Sobre Mim</h2>
+        <img src="https://my-site-imagens-videos.s3.us-east-2.amazonaws.com/media/roberto.jpg" class="img-fluid" alt="#ParaTodosVerem: A imagem mostra Roberto Manoel, um programador feliz. Ele veste uma camisa laranja, óculos de sol e um boné preto. Ele sorri com orgulho e confiança.">
+        <p class="text-dark bg-white">
+        <br>
+        <p class="text-dark bg-white">Olá! meu nome é Roberto Manuel de Araujo e sou um programador Python altamente qualificado e motivado com experiência em desenvolvimento web. Meu objetivo é utilizar minha experiência para criar sites e aplicativos inovadores e amigáveis ao usuário. Estou comprometido em fornecer produtos de alta qualidade que excedam as expectações do cliente e contribuam para o sucesso de seus negócios.</p>
+    </section>
+
+    <section class="mb-5">
+        <br>
+        <h2 class="mb-3 text-dark bg-white">Experiência Profissional</h2>
+        <p class="text-dark bg-white">Desenvolvi e implementei soluções de design web responsivas, otimizando a experiência do usuário e a acessibilidade por meio do uso de HTML, CSS e JavaScript. Realizei testes e depurações minuciosos para identificar e resolver quaisquer problemas, garantindo entregas de alta qualidade dentro dos prazos acordados.</p>
+    </section>
+
+    <section class="mb-5">
+        <br>
+        <h2 class="mb-3 text-dark bg-white">Competências</h2>
+        <ul class="list-unstyled">
+            <li>HTML/CSS - Profissional</li>
+            <li>JavaScript - Profissional</li>
+            <li>Python - Profissional</li>
+        </ul>
+    </section>
+
+    <section class="mb-5">
+        <br>
+        <h2 class="mb-3 text-dark bg-white">Projetos</h2>
+        <p class="text-dark bg-white">Confira alguns dos meus trabalhos em minha <a href="{% url 'project_index' %}" class="text-primary">página de projetos</a>.</p>
+    </section>
+
+    <section class="mb-5">
+        <h2 class="mb-3 text-dark bg-white">Blog</h2>
+        <p class="text-dark bg-white">Confira meus últimos posts no <a href="{% url 'postagem_list' %}" class="text-primary">meu blog</a>.</p>
+    </section>
+
+    <section class="mb-5">
+        <h2 class="mb-3 text-dark bg-white">Contato</h2>
+        <p class="text-dark bg-white">Para mais informações ou para discutir oportunidades de trabalho, por favor entre em contato através do email: <a href="mailto:roberto.programadortech@gmail.com" class="text-primary">roberto.programadortech@gmail.com</a></p>
+        <p class="text-dark bg-white">Veja também o meu perfil no GitHub: <a href="https://github.com/Roberto-manoel" class="text-primary">Roberto Manuel</a></p>
+        <p class="text-dark bg-white">Ou me chame no WhatsApp: <a href="https://wa.me/558192423876" class="text-primary">WhatsApp</a></p>
+    </section>
+    <section class="mb-5">
+        <h2 class="mb-3 text-dark bg-white">Canal do Youtube</h2>
+        <p class="text-dark bg-white">Confira meus vídeos no <a href="{% url 'youtube_videos' %}" class="text-primary">Canal do Youtube</a>.</p>
+    </section>
+</main>
+{% endblock page_content %}

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block page_content %}
+<main class="container" style="background-color: red;">
+    <h1 class="mt-5 mb-4 text-dark bg-white">Bem-vindo ao meu site!</h1>
+    <img src="https://my-site-imagens-videos.s3.us-east-2.amazonaws.com/media/Imagem4.jpg" class="img-fluid" alt="#ParaTodosVerem: close-up de uma tela de computador com linhas de código em várias cores.">
+    <section class="mb-5">
+        <br>
+        <p class="text-dark bg-white">Olá! Meu nome é Roberto Manoel, sou um programador apaixonado por tecnologia. Neste site, você encontrará informações sobre meus projetos, postagens de blog sobre tópicos de tecnologia e como entrar em contato comigo. Espero que você encontre o que está procurando!</p>
+    </section>
+
+    <section class="mb-5">
+        <h2 class="mb-3 text-dark bg-white">Portfólio</h2>
+        <p class="text-dark bg-white">Ao longo da minha carreira, trabalhei em vários projetos interessantes. Confira alguns dos meus trabalhos emmeu <a href="{% url 'home' %}" class="text-primary">Portfólio</a>.</p>
+    </section>
+
+    <section class="mb-5">
+        <h2 class="mb-3 text-dark bg-white">Blog</h2>
+        <p class="text-dark bg-white">Gosto de compartilhar meus pensamentos e aprendizados sobre programação e tecnologia em geral. Confira meus últimos posts no <a href="{% url 'postagem_list' %}" class="text-primary">meu blog</a>.</p>
+    <p class="text-dark bg-white">Você também pode conferir as últimas notícias de tecnologia no <a href="{% url 'tech_news' %}" class="text-primary">RB Notícias</a>.</p>
+    </section>
+
+    <section class="mb-5">
+        <h2 class="mb-3 text-dark bg-white">Contato</h2>
+        <p class="text-dark bg-white">Se você tem alguma dúvida, sugestão ou simplesmente quer dizer oi, sinta-se à vontade para entrar em contato através do email: <a href="mailto:roberto.programadortech@gmail.com" class="text-primary">roberto.programadortech@gmail.com</a></p>
+        <p class="text-dark bg-white">Você também pode me encontrar no GitHub: <a href="https://github.com/Roberto-manoel" class="text-primary">Roberto Manuel</a> ou no WhatsApp: <a href="https://wa.me/558192423876" class="text-primary">WhatsApp</a></p>
+    </section>
+
+    <section class="mb-5">
+        <h2 class="mb-3 text-dark bg-white">Canal do Youtube</h2>
+        <p class="text-dark bg-white">Além disso, tenho um canal no YouTube onde compartilho tutoriais e dicas</p>
+        <p class="text-dark bg-white">Confira meus vídeos no <a href="{% url 'youtube_videos' %}" class="text-primary">Canal do Youtube</a>.</p>
+        </section>
+</main>
+{% endblock page_content %}

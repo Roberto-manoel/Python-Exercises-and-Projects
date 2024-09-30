@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'usuarios/css/usuarios.css' %}">
+{% endblock head %}
+
+{% block body %}
+<div class="container text-center mt-5">
+    <h1>Bem-vindo à Minha Empresa!</h1>
+    <p class="lead">Estamos felizes em tê-lo aqui. Cadastre sua empresa para começar.</p>
+    <a href="{% url 'cadastrar_empresa' %}" class="btn btn-primary">Cadastrar Empresa</a>
+</div>
+{% endblock body %}

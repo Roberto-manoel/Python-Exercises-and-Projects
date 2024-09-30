@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}
+Agradecimento
+{% endblock title %}
+
+{% block page_content %}
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-center">{{ mensagem }}</h1>
+            <p class="text-center">Obrigado! Em breve entro em contato com você. Aproveite e visite meu blog abaixo.” Seu pedido está completo! Caso precise de mais alguma ajuda, estou à disposição. 🌟</p>
+            <div class="text-center mt-4">
+            </div>
+        </div>
+    </div>
+    <ul class="nav">
+        <li class="nav-item"><a class="nav-link text-warning" href="{% url 'home' %}">Meu portfólio</a></li>
+        <li class="nav-item"><a class="nav-link text-dark" href="{% url 'postagem_list' %}">Blog</a></li>
+        <li class="nav-item"><a class="nav-link text-warning" href="{% url 'youtube_videos' %}">Canal do YouTube</a></li>
+        <li class="nav-item"><a class="nav-link text-warning" href="{% url 'project_index' %}">Projetos</a></li>
+        <li class="nav-item"><a class="nav-link text-warning" href="{% url 'redes_sociais' %}">Redes Sociais</a></li>
+        <li class="nav-item"><a class="nav-link text-warning" href="{% url 'site' %}">Início</a></li>
+</ul>
+{% endblock page_content %}

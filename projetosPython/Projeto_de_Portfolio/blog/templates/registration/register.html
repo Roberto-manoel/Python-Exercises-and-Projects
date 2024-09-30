@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block page_content %}
+  <ul class="nav">
+    <li class="nav-item"><a class="nav-link text-warning" href="{% url 'home' %}">Portfólio</a></li>
+    <li class="nav-item"><a class="nav-link text-warning" href="{% url 'solicitar-servico' %}">Solicitar Serviço</a></li>
+    <li class="nav-item"><a class="nav-link text-warning" href="{% url 'youtube_videos' %}">Canal do YouTube</a></li>
+    <li class="nav-item"><a class="nav-link text-warning" href="{% url 'project_index' %}">Projetos</a></li>
+    <li class="nav-item"><a class="nav-link text-warning" href="{% url 'site' %}">Início</a></li>
+  </ul>
+
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <h2 class="sr-only text-warning">Registro</h2>
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-warning">Registrar</button>
+      </form>
+      <p class="mt-3 text-warning">
+        Já tem uma conta? <a href="{% url 'login' %}" class="text-warning">Faça login</a>.
+      </p>
+      {% if form.errors %}
+        <div class="alert alert-warning mt-3">
+          {{ form.errors }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

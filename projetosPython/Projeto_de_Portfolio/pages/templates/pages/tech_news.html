@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block page_content %}
+    <div class="container mt-5">
+        <h1 class="mb-4">Notícias de Tecnologia</h1>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" aria-label="Navegação do site">
+        <img src="https://my-site-imagens-videos.s3.us-east-2.amazonaws.com/media/imagen8%5B1%5D.jpg" class="img-fluid" alt="#ParaTodosVerem: A imagem mostra um interruptor de rede (switch) com cabos verdes conectados. Essa visão aproximada foca em uma parte da infraestrutura de TI, possivelmente em um ambiente de servidores ou centro de dados.">
+        <ul class="navbar-nav justify-content-center">
+            <li class="nav-item"><a class="nav-link text-warning" href="{% url 'solicitar-servico' %}">Solicitar Serviço</a></li>
+            <li class="nav-item"><a class="nav-link text-warning" href="{% url 'home' %}">Portfólio</a></li>
+            <li class="nav-item"><a class="nav-link text-warning" href="{% url 'youtube_videos' %}">Canal do YouTube</a></li>
+            <li class="nav-item"><a class="nav-link text-warning" href="{% url 'project_index' %}">Projetos</a></li>
+            <li class="nav-item"><a class="nav-link text-warning" href="{% url 'redes_sociais' %}">Redes Sociais</a></li>
+            <li class="nav-item"><a class="nav-link text-warning" href="{% url 'site' %}">Início</a></li>
+        </ul>
+        </nav>
+            <br>
+            <form method="GET" action="{% url 'tech_news' %}">
+            <div class="input-group mb-4">
+                <input type="text" name="q" class="form-control" placeholder="Pesquisar notícias...">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="submit">Pesquisar</button>
+                </div>
+            </div>
+        </form>
+        {% for article in articles %}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">{{ article.title }}</h5>
+                    <p class="card-text">{{ article.description }}</p>
+                    <a href="{{ article.url }}" class="btn btn-primary">Leia mais</a>
+                </div>
+            </div>
+        {% empty %}
+            <p>Nenhuma notícia encontrada.</p>
+        {% endfor %}
+    </div>
+{% endblock %}

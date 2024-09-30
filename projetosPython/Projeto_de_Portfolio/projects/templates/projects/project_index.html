@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block page_content %}
+    <div class="bg-danger text-center">
+        <h1 class="mt-5 mb-4 text-dark bg-white">Olá, sou Roberto Manuel, o desenvolvedor que transforma ideias em realidade digital!</h1>
+        <br>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" aria-label="Navegação do site">
+            <img src="https://my-site-imagens-videos.s3.us-east-2.amazonaws.com/media/imagen7.jpg" class="img-fluid" alt="#ParaTodosVerem: A imagem parece ser uma captura de tela de um ambiente de desenvolvimento ou editor de texto usado para programação. O código-fonte está relacionado a configurações de um projeto que utiliza Ruby on Rails, RSpec, Capybara e Shoulda Matchers.">
+            <ul class="navbar-nav justify-content-center">
+                <li class="nav-item"><a class="nav-link text-dark" href="{% url 'home' %}">Portfólio</a></li>
+                <li class="nav-item"><a class="nav-link text-warning" href="{% url 'solicitar-servico' %}">Solicitar Serviço</a></li>
+                <li class="nav-item"><a class="nav-link text-warning" href="{% url 'youtube_videos' %}">Canal do Youtube</a></li>
+                <li class="nav-item"><a class="nav-link text-dark" href="{% url 'postagem_list' %}">Blog</a></li>
+                <li class="nav-item"><a class="nav-link text-warning" href="{% url 'redes_sociais' %}">Redes Sociais</a></li>
+                <li class="nav-item"><a class="nav-link text-warning" href="{% url 'site' %}">Início</a></li>
+            </ul>
+        </nav>
+        <br>
+        <h1 class="text-dark bg-white">Seja bem-vindo à minha página de projetos</h1>
+        <div class="row">
+            {% for project in projects %}
+                <div class="col-md-4">
+                    <div class="card mb-2">
+                        {% if project.image %}
+                            <img class="card-img-top" src="{{ project.image.url }}">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title text-dark bg-white">{{ project.title }}</h5>
+                            <p class="card-text text-dark bg-white">{{ project.description }}</p>
+                            <a href="{% url 'project_detail' project.pk %}" class="btn btn-primary">
+                                Read More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block page_content %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light" aria-label="Navegação do site">
+<img src="https://my-site-imagens-videos.s3.us-east-2.amazonaws.com/media/imagen6.jpg" class="img-fluid" alt="#ParaTodosVerem: Imagem de tela de computador com código em cores diferentes. Fundo preto.">
+<ul class="nav">
+    <li class="nav-item"><a class="nav-link text-warning" href="{% url 'home' %}">Portfólio</a></li>
+    <li class="nav-item"><a class="nav-link text-warning" href="{% url 'solicitar-servico' %}">Solicitar Serviço</a></li>
+    <li class="nav-item"><a class="nav-link text-warning" href="{% url 'postagem_list' %}">blog</a></li>
+    <li class="nav-item"><a class="nav-link text-warning" href="{% url 'project_index' %}">Projetos</a></li>
+    <li class="nav-item"><a class="nav-link text-warning" href="{% url 'redes_sociais' %}">Redes Sociais</a></li>
+    <li class="nav-item"><a class="nav-link text-warning" href="{% url 'site' %}">Início</a></li>
+    </ul>
+</nav>
+<br>
+{% for video in videos %}
+    <div>
+        <h2>{{ video.snippet.title }}</h2>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ video.id.videoId }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <p>{{ video.snippet.description }}</p>
+    </div>
+{% endfor %}
+{% endblock page_content %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+<div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading">Desculpe!</h4>
+        <p>Não foi possível obter os vídeos do YouTube no momento. Por favor, tente novamente mais tarde.</p>
+    </div>
+
+    <ul class="nav">
+        <li class="nav-item"><a class="nav-link text-warning" href="{% url 'home' %}">Portfólio</a></li>
+        <li class="nav-item"><a class="nav-link text-warning" href="{% url 'solicitar-servico' %}">Solicitar Serviço</a></li>
+        <li class="nav-item"><a class="nav-link text-warning" href="{% url 'postagem_list' %}">Blog</a></li>
+        <li class="nav-item"><a class="nav-link text-warning" href="{% url 'project_index' %}">Projetos</a></li>
+        <li class="nav-item"><a class="nav-link text-warning" href="{% url 'redes_sociais' %}">Redes Sociais</a></li>
+        <li class="nav-item"><a class="nav-link text-warning" href="{% url 'site' %}">Início</a></li>
+</ul>
+{% endblock %}

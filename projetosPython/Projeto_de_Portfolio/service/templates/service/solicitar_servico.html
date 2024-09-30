@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block page_content %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light" aria-label="Navegação do site">
+<img src="https://my-site-imagens-videos.s3.us-east-2.amazonaws.com/media/imagen5.jpg" class="img-fluid" alt="#ParaTodosVerem: Cena Descrita: Local: Uma sala. Pessoa 1: Um adulto. Detalhes: Mesa: Com objetos sobre ela. Escrivaninha: Com papéis e canetas. Computador: Ligado e pronto para uso.">
+<ul class="navbar-nav justify-content-center">
+    <li class="nav-item"><a class="nav-link text-warning" href="{% url 'home' %}">portfólio</a></li>
+    <li class="nav-item"><a class="nav-link text-dark" href="{% url 'postagem_list' %}">Blog</a></li>
+    <li class="nav-item"><a class="nav-link text-warning" href="{% url 'youtube_videos' %}">Canal do YouTube</a></li>
+    <li class="nav-item"><a class="nav-link text-warning" href="{% url 'project_index' %}">Projetos</a></li>
+    <li class="nav-item"><a class="nav-link text-warning" href="{% url 'redes_sociais' %}">Redes Sociais</a></li>
+    <li class="nav-item"><a class="nav-link text-warning" href="{% url 'site' %}">Início</a></li>
+</ul>
+</nav>
+{% load static %}
+<br>
+<h2>Olá, bem-vindo à página de serviços.</h2>
+<p>Aqui está a página de contratação de serviços individuais. Abaixo, preencha seus dados corretamente e escolha o serviço que deseja contratar: criação de site, blog e portfólio. Depois, pressione a tecla “Enter” para enviar sua solicitação. Roberto Manuel agradece a preferência! 🌟👍</p>
+<br>
+<form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+    <div class="mb-3">
+        <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+        {{ field }}
+        {% if field.errors %}
+            <div class="alert alert-danger" role="alert">
+                {{ field.errors }}
+            </div>
+        {% endif %}
+    </div>
+    {% endfor %}
+    <button type="enviar" class="btn btn-primary">Enviar</button>
+</form>
+{% endblock page_content %}

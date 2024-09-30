@@ -1,0 +1,49 @@
+:root {
+    --main-color: #161424;
+    --dark-color: #0D0C16;
+    --contrast-color: #4F46E5;
+    --placeholder-color: rgb(196, 196, 196);
+    --white-color: #ffffff;
+}
+
+body {
+    color: var(--white-color) !important;
+    background-color: var(--main-color) !important;
+}
+
+.bg-color-dark {
+    background-color: var(--main-color);
+}
+
+.p-bold {
+    font-weight: bold;
+}
+
+.color-dark {
+    color: var(--dark-color);
+}
+
+.dark-color {
+    background-color: var(--dark-color);
+    color: var(--white-color) !important;
+}
+
+.centralizar {
+    text-align: center;
+}
+
+::-webkit-input-placeholder {
+    color: var(--placeholder-color) !important;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+    color: var(--placeholder-color) !important;
+}
+
+::-moz-placeholder { /* Firefox 19+ */
+    color: var(--placeholder-color) !important;
+}
+
+:-ms-input-placeholder {
+    color: var(--placeholder-color) !important;
+}
